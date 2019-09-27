@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>程序员小罗</title>
+  
+  <subtitle>程序员小罗</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://coderluo.top/"/>
+  <updated>2019-09-27T13:31:14.033Z</updated>
+  <id>http://coderluo.top/</id>
+  
+  <author>
+    <name>coderluo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Zookeeper深度学习1-Paxos算法详解</title>
+    <link href="http://coderluo.top/2019/09/05/zookeeper-shen-du-xue-xi-1-paxos-suan-fa-xiang-jie/"/>
+    <id>http://coderluo.top/2019/09/05/zookeeper-shen-du-xue-xi-1-paxos-suan-fa-xiang-jie/</id>
+    <published>2019-09-05T11:45:25.000Z</published>
+    <updated>2019-09-27T13:31:14.033Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;em&gt;本片文章将开启对分布式协调服务zk的学习，目前规划是从理论基础开始逐步到源码解析，深入学习这个在分布式系统中起着至关作用的组件。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;对于 zk 理论的学习，最重要也是最难的知识点就是 Paxos 算法。所以我们首先学习 Paxos
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/categories/Zookeeper/"/>
+    
+    
+      <category term="Paxos" scheme="http://coderluo.top/tags/Paxos/"/>
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/tags/Zookeeper/"/>
+    
+  </entry>
+  
+</feed>
