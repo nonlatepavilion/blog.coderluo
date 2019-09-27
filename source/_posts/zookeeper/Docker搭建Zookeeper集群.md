@@ -1,10 +1,10 @@
 ---
 title: Docker搭建Zookeeper集群
 tags:
-  - zookeeper
-  - docker
+  - Zookeeper
+  - Docker
 date: 2019-08-28 22:42:30
-categories: zookeeper
+categories: Zookeeper
 ---
 
 > 大家好，我是程序员小罗，这是我的技术学习笔记。
