@@ -233,12 +233,12 @@ postCalendar: true
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
   enable: true
-  owner: coderluo
+  owner: coderluojust
   repo: blog.coderluo
   oauth:
     clientId: d1cd88714fe64af1ff76
     clientSecret: 22f364825012994d3cc9e5a08f63ad13d074829c
-  admin: coderluo
+  admin: coderluojust
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
