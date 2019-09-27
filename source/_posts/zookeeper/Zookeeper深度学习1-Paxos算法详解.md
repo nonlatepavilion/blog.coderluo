@@ -6,6 +6,7 @@ tags:
 date: 2019-09-05 19:45:25
 categories: Zookeeper
 cover: true
+img: http://media.coderluo.top/img/20190928015012.png
 ---
 
 
@@ -133,8 +134,8 @@ Paxos 算法的执行过程划分为两个阶段:**准备阶段 prepare** 与**�
 后续我们对继续深入学习Zookeeper之**Zab协议（Paxos算法的工业实现）**，今天提到的活锁问题，也会得到相应的解决，敬请期待。
 
 系列文章：
-- 
-
+- [Zookeeper深度学习2-Zab协议详解](http://coderluo.top/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-2-zab-xie-yi-xiang-jie/)
+- [Zookeeper深度学习3-源码分析-Leader选举](http://coderluo.top/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-3-yuan-ma-fen-xi-leader-xuan-ju/)
 
 
 
