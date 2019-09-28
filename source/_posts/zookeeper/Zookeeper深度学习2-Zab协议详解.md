@@ -5,7 +5,6 @@ tags:
   - Zookeeper
 date: 2019-09-08 22:48:16
 categories: Zookeeper
-cover: true
 
 ---
 

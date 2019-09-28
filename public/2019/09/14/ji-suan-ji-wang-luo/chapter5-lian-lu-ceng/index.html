@@ -1,0 +1,1244 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="chapter5-链路层, 程序员小罗, coderluo">
+    <meta name="description" content="本章接着前一章学习的网络层，更加深入来到下一层数据链路层。
+链路层概述首先来一张数据报传输过程的例子，帮助理解数据报是如何从发送端到达目的端的，中间发生了怎样的过程，来看下面这张图：
+
+如上图所示的公司网络中，思考从无线主机向服务器发送一个">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>chapter5-链路层 | 程序员小罗</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">程序员小罗</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/" class="waves-effect waves-light">
+						
+						<i class="fa fa-home"></i>
+						
+						<span>首页</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/tags" class="waves-effect waves-light">
+						
+						<i class="fa fa-tags"></i>
+						
+						<span>标签</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/categories" class="waves-effect waves-light">
+						
+						<i class="fa fa-bookmark"></i>
+						
+						<span>分类</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/archives" class="waves-effect waves-light">
+						
+						<i class="fa fa-archive"></i>
+						
+						<span>归档</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/about" class="waves-effect waves-light">
+						
+						<i class="fa fa-user-circle-o"></i>
+						
+						<span>关于</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/friends" class="waves-effect waves-light">
+						
+						<i class="fa fa-address-book"></i>
+						
+						<span>友情链接</span>
+					</a>
+          
+        </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">程序员小罗</div>
+        <div class="logo-desc">
+            
+            热爱编程，更热爱生活
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/coderluojust/blog.coderluo" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/coderluojust/blog.coderluo" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        chapter5-链路层
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/链路层/" target="_blank">
+                                <span class="chip bg-color">链路层</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                计算机网络
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-14
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        6.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        22 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>本章接着前一章学习的网络层，更加深入来到下一层数据链路层。</p>
+<h2 id="链路层概述"><a href="#链路层概述" class="headerlink" title="链路层概述"></a>链路层概述</h2><p>首先来一张数据报传输过程的例子，帮助理解数据报是如何从发送端到达目的端的，中间发生了怎样的过程，来看下面这张图：</p>
+<p><img src="http://media.coderluo.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/jvu78.png" alt="公司网络"></p>
+<p>如上图所示的公司网络中，思考从无线主机向服务器发送一个数据报，该数据报将实际通过6段链路：</p>
+<ol>
+<li>发送主机与WIFI接入点之间的Wifi链路；</li>
+<li>接入点与链路层交换机之间的以太网链路；</li>
+<li>链路层交换机与路由器之间的链路；</li>
+<li>两台路由器之间的链路；</li>
+<li>路由器和服务器链路层交换机之间的链路；</li>
+<li>交换机和服务器之间的以太网链路；</li>
+</ol>
+<p>在通过特定链路时，传输结点将数据报封装在链路层帧中，并将该帧传送到链路中。</p>
+<h3 id="链路层提供的服务"><a href="#链路层提供的服务" class="headerlink" title="链路层提供的服务"></a>链路层提供的服务</h3><ol>
+<li>成帧</li>
+<li>链路接入</li>
+<li>可靠交付，链路层的可靠交付通过是通过确认和重传取得，这里应该联想传输层的TCP协议提供的可靠传输服务。</li>
+<li>差错检测和纠正</li>
+</ol>
+<h3 id="链路层在何处实现"><a href="#链路层在何处实现" class="headerlink" title="链路层在何处实现"></a>链路层在何处实现</h3><p><strong>链路层的主体部分是在网络适配器</strong>中实现的，也就是我们说的网卡，它实现的服务有：成帧、链路接入、差错检测等。</p>
+<h2 id="差错校验和纠技术"><a href="#差错校验和纠技术" class="headerlink" title="差错校验和纠技术"></a>差错校验和纠技术</h2><p>链路层接到上层的应用数据后，加上自己的首部组成链路层数据报，放在链路中进行传播。传播中可能发生错误，因此需要有差错检测机制来发现链路层首部和应用数据的错误。差错检测可能并不能找到所有的错误，因此链路层可能向上层交付一个有差错的数据报，但是这种事情的发生概率比较低</p>
+<p>差错检测常用的 3 种技术分别是：<strong>奇偶校验、检验和方法、循环冗余检测</strong></p>
+<ol>
+<li><strong>奇偶校验</strong> 方法是其中最简单的一种。如果要发送 d 比特的数据，在这些数据的最后附加一个比特，共 d+1 比特，附加的比特使得所有的比特位中的 1 的个数是偶数。这样，当接收方收到数据后，只需要检查 d+1 比特的数据中的 1 的个数是不是偶数，如果不是则必定在传输过程中发生了错误；但是如果是，也并不意味着一定没有发生错误，因为有可能在两个地方发生了比特翻转使得 1 的个数仍为偶数，当然这样的事情发生的概率是比较低的</li>
+</ol>
+<blockquote>
+<p>上面这样的奇偶校验方法是一维奇偶校验，后来还出现了 二维奇偶校验 方法。将所有的数据分为 i 行 j 列，对每一行附加一个比特，对每一列也附加一个比特，这样总共就附加了 i+j+1 比特。每一行和每一列的附加比特都让行和列的数字 1 的数量是偶数。当某一个比特数据发生错误后，我们发现在第 n 行和第 m 列的数字 1 的个数不是偶数，那么发生错误的数据就是 n 行 m 列的数据，这样我们就能把该比特数据翻转到另一个值，我们就纠正了数据错误，这种能力叫做 前向纠错。二维奇偶校验同样能发现多于一个比特的数据错误，但这种情况下就不能纠正错误了</p>
+</blockquote>
+<ol start="2">
+<li><strong>英特网检验和（Internet checksum）</strong> 是另一种差错监测方法。从它的英文名称就可以看出，它是把二进制数据当做整数进行求和来检测差错的。比如，将数据按 16 比特分为多个整数，将所有整数求和，把和取反码就得到了检验和。把检验和附加在报文中。接收方收到数据和检验和后，同样按照 16 比特的分组把所有整数求和并取反码，如果得到的数全是 1 说明数据传输没有发生错误；而如果有一位是 0 就说明错误发生了</li>
+</ol>
+<blockquote>
+<p>之前学习运输层时我们知道运输层的协议多是用检验和法，而链路层协议通常会用下面介绍的 CRC 方法。检验和方法相对于 CRC 来说偏弱一些，而因为运输层协议通常是由软件实现，因此运输层选择了偏弱但是计算更加快速的检验和方法。而链路层因为更加贴近底层硬件，而硬件专门对 CRC 提供支持，因此链路层选用了更强的 CRC</p>
+</blockquote>
+<ol start="3">
+<li><strong>循环冗余检测（Cyclic redundancy Check, CRC）</strong> 是链路层使用的差错检测技术。这个方法国语复杂，我也并没有看懂，这里就不详细记录了</li>
+</ol>
+<h2 id="多路访问链路和协议"><a href="#多路访问链路和协议" class="headerlink" title="多路访问链路和协议"></a>多路访问链路和协议</h2><blockquote>
+<p>多路访问问题 研究如何协调多个发送和接受节点对同一个共享广播信道的访问。当两个或多个节点在信道上同时发送数据时，他们的信号会彼此 <strong>碰撞（collide）</strong>，发生碰撞后任何节点都不能从信道上接受数据。因此多路访问协议要决定谁在什么时候有发送数据的权力。目前有很多多路访问协议，可以分为以下三种:</p>
+</blockquote>
+<ol>
+<li><strong>信道划分协议</strong></li>
+<li><strong>随机接入协议</strong></li>
+<li><strong>轮流协议</strong></li>
+</ol>
+<p>对于一个速率是 R bps 的广播信道，多路访问协议最好有下面的特性:</p>
+<ul>
+<li>当仅有一个节点在发送数据时，节点应有 R bps 的吞吐量</li>
+<li>当有 M 个节点在发送数据时，每个节点应有 R/M bps 的吞吐量。不一定要求每个节点在每个时间点都有 R/M bps 的吞吐量，而是在一个时间段内有这要的平均速率。这也要求每个节点都能平等的使用信道</li>
+<li>协议不会因为单个节点的故障而崩溃</li>
+<li>协议应是简单的，实现不昂贵</li>
+</ul>
+<h3 id="信道划分协议"><a href="#信道划分协议" class="headerlink" title="信道划分协议"></a>信道划分协议</h3><p>信道划分协议有 3 种：</p>
+<ol>
+<li>时分多路复用（TDM）</li>
+<li>频分多路复用（FDM） </li>
+<li>码分多址（CDMA）</li>
+</ol>
+<ul>
+<li><p>时分多路复用是把时间划分 时间帧（time frame），而一个时间帧划分为为多个 时隙（slot）。时隙会被分配给各个节点，每个节点有数据要发送时，只能等待直到自己的时隙到来才能发送。TDM 非常公平，但是当只有一个节点要发送数据时，这个节点的吞吐量被限制在 R/M bps，不能到达信道的全速</p>
+</li>
+<li><p>频分多路复用把信道划分为不同的频段，频道的速率是 R/M bps，频段被分配给各个节点，各个节点可以同时发送数据而不会碰撞。FDM 与 TDM 一样公平但是当只有一个节点时不能全速发送</p>
+</li>
+<li><p>码分多址技术给每个节点分配不同的编码，精心选择编码可以使得当多个节点同时发送数据而不发生干扰，接收方能正确接收发送方编码的数据比特（<strong>假设接收方知道发送方的编码</strong>），而不再乎其他发送方的干扰传输。</p>
+</li>
+</ul>
+<h3 id="随机接入协议"><a href="#随机接入协议" class="headerlink" title="随机接入协议"></a>随机接入协议</h3><p>随机接入协议中，每个节点总是以最大的速率发送数据，当有碰撞发生时，节点等待一个随机的时间后再次尝试发送数据。随机接入协议中比较常见的有 <strong>ALOHA 协议</strong> 和 <strong>载波侦听多路访问协议（CSMA）</strong></p>
+<h4 id="时隙-ALOHA"><a href="#时隙-ALOHA" class="headerlink" title="时隙 ALOHA"></a>时隙 ALOHA</h4><p>对时隙 ALOHA，我们做出下面的假设：</p>
+<ul>
+<li>所有帧由 L 比特组成</li>
+<li>时间被划分为 L/R 的时隙，正好每一个时隙发送一帧</li>
+<li>节点只在时隙的开始发送帧</li>
+<li>节点是同步的，每个节点都知道时隙何时开始</li>
+<li>如果在一个时隙中有两个或多个帧发生碰撞，节点会在时隙结束之前得知碰撞事件</li>
+</ul>
+<p>对于 ALOHA 协议中的操作如下：</p>
+<ul>
+<li>当节点有数据要发送时，等到下一个时隙开始立即传送数据</li>
+<li>如果没有碰撞，数据的发送就成功了。如果有新帧到来，立即发送</li>
+<li>如果有碰撞，那么有 p 的概率在下一个时隙中发送数据，直到数据没有碰撞的发送出去</li>
+</ul>
+<blockquote>
+<p>相比较于 TDM 和 FDM，ALOHA 协议同样公正，而且在只有一个节点有数据发送时，它能以全速发送数据。当有大量的节点存在时，节点间会因为碰撞而造成一些时隙被浪费。我们定义一个成功的时隙就是无碰撞的成功发送了数据的时隙，而效率就是成功的时隙占所有时隙的份额。通过计算表明，当有大量的节点有发送大量的数据时，ALOHA 协议的效率大约是 1/e = 37%，有 26% 的时隙发生了碰撞</p>
+</blockquote>
+<h4 id="非时隙-ALOHA-协议"><a href="#非时隙-ALOHA-协议" class="headerlink" title="非时隙 ALOHA 协议"></a>非时隙 ALOHA 协议</h4><blockquote>
+<p>时隙 ALOHA 协议中有一个假设：节点之间是同步的。但第一版的 ALOHA 协议是一个非同步协议，即节点可以在任意时间点开始发送数据。去掉节点间的必须同步的假设后，我们可以得到非时隙 ALOHA 协议的效率是 1/(2e) ，比时隙 ALOHA 协议还要小一些</p>
+</blockquote>
+<h4 id="载波侦听多路访问协议"><a href="#载波侦听多路访问协议" class="headerlink" title="载波侦听多路访问协议"></a>载波侦听多路访问协议</h4><p>在 ALOHA 协议中，节点决定是否发送数据与其他节点无关，这就导致当其他节点在发送数据时，另一个节点也开始发送数据就必定使得碰撞发生。而如果节点如果能够侦听到另一个节点正在发送数据，那么它决定在另一个节点结束发送数据后才发送自己的数据，这将避免碰撞的发生。这就是 载波侦听 原理</p>
+<p>除此之外还有一个重要的原理叫做 碰撞检测（collision detection），即节点在发送数据时同时也在侦听网络，一些发生另一个节点发送的信号与自己发送的信号相互干扰后就立即停止发送</p>
+<p>这两个规则被包含在 载波侦听多路访问协议（Carrier Sense Multiple Access, CSMA） 和 具有碰撞检测的 CSMA（CSMA with Collision Detection, CSMA/CD） 协议族中</p>
+<p>如果说节点具有载波侦听功能，那么为什么还会发生碰撞呢？这是因为信号在信道中传播的速度是有限的，当一个节点 A 开始传送数据后，另一个节点 B 可能需要过一段时间才能侦听到信号，如果 B 在侦听到信号之前也开始传送数据，那么此时碰撞就发生了</p>
+<p>在检测到碰撞后，节点会等待一个随机的时间后再次尝试发送数据。这个随机的时间量选择也是有一个算法的，叫做 二进制指数后退（binary exponential backoff）。即当节点连续发生 n 次碰撞后，它会从 {0, 1, 2, 4, … , 2^n -1 } 的常数中随机选择一个值 K 。在以太网协议中，等待的时间是 K * 传送 512 比特所需要的时间，作为随机等待的时间。n 能取到的最大值一般是 10</p>
+<p>经过一系列复杂的计算，我们可以得到 CSMA/CD 的效率是 1 / (1 + 5 d1/d2) ，其中 d1 是信号在两个节点间传播所需要的最大时间，d2 是传递一个最大长度的以太网帧所需要的时间。当 d1 越小时，传播速率越接近于 1 ，即信号传播速度越快，碰撞越不可能发生</p>
+<h3 id="轮流协议"><a href="#轮流协议" class="headerlink" title="轮流协议"></a>轮流协议</h3><p>轮流协议（taking-turns protocol）也有很多种。</p>
+<p>第一种轮流协议是 轮询协议（polling protocol）。这个协议要求一个节点被指定为主节点，主节点轮询每个节点，告诉每个节点它能传送的帧的数量。比如主节点告诉节点 1 它能传送的帧的数量，当节点 1 传送完这些帧后，主节点告诉节点 2 能传送的帧的数量，依此类推。这个协议需要轮询每个节点，这就引入了轮询时延，导致效率有所降低。第二个缺点是当主节点出现故障，整个信道都不可用了。802.15 协议和蓝牙协议就使用了轮询协议</p>
+<p>第二种轮流协议是 令牌传递协议（token-passing protocol）。这个协议没有主节点，而是存在一个称为 令牌（token） 的特殊帧，令牌只有一个，在每个节点之间以固定的次序传输。如果一个节点有数据需要发送，它会尝试去获取令牌，只有当它拿到令牌后才会开始发送数据。如果节点拿到了令牌却没有数据需要发送，那么它会把令牌传递给下一个节点。下一个节点会根据自己有没有数据需要发送而决定是自己保留令牌还是传给另一个节点。令牌传送协议效率很高且分散，但是也有自己的缺点。如果一个节点发生故障，没有适时交出令牌，那么整个网络将会瘫痪，必须通过某种令牌恢复策略才能从瘫痪中恢复</p>
+<h2 id="交换局域网"><a href="#交换局域网" class="headerlink" title="交换局域网"></a>交换局域网</h2><blockquote>
+<ul>
+<li>主机除了具有英特网 IP 地址外，他们还有另外一种地址，即 MAC 地址。严格来说，是主机的网络适配器具有 MAC 地址。对于有多个接口的路由器，每一个接口都对应了一个 MAC 地址</li>
+<li>MAC 地址总长度是 6 字节，因此共有 2^48 个可能的地址，大约是 200 万亿个，数字这么大以至于目前世界上没有两个网卡具有相同的 MAC 地址</li>
+</ul>
+</blockquote>
+<h3 id="地址解析协议-ARP"><a href="#地址解析协议-ARP" class="headerlink" title="地址解析协议 ARP"></a>地址解析协议 ARP</h3><p>因为有网络层地址（IP 地址）和链路层地址（MAC 地址）的存在，就需要在两者之间进行转换，这个转换的协议就是 <strong>地址解析协议（Address Resolution Protocol，ARP）</strong></p>
+<p>ARP 实际上与 DNS 协议特别像，即 DNS 将域名解析成 IP 地址，而 ARP 将 IP 地址解析成 MAC 地址。不过 DNS 能解析网络上任意一个位置的主机的域名，而 ARP 只能解析同一个子网下的 IP 地址的 MAC 地址</p>
+<p>在一个主机上会有一个叫做 ARP 表 的数据解构，里面保存着子网内的 IP 地址到 MAC 地址的映射，其中的每一个项目的过期时间通常是 20 分钟。当主机需要向一个 IP 地址发送数据时，会现在自己的 ARP 表中搜索这个地址的 MAC 地址。如果表中不存在这个映射关系，那么就需要借助 ARP 协议了。主机回想子网内广播一个 ARP 分组（ARP Packet）。这个分组包含发送方和接收方的 IP 地址和 MAC 地址，ARP 的响应分组和请求分组具有相同的结构</p>
+<p>在请求分组中，发送方将分组发向 MAC 地址是 FF-FF-FF-FF-FF-FF 的接受主机，这个地址实际上是广播地址，因此所有的主机在收到这个分组后，都会选择接受它。接受后，主机会检测请求分组中请求解析的 IP 地址是不是自身，如果不是，主机会把这个请求分组丢弃；而如果是，那么主机会构造一个相同的响应分组，不过这个分组不会是一个广播帧，而是发向请求的主机。请求主机收到后也就知道了自己想要的结果</p>
+<p>MAC 地址只能在子网内部使用，如果主机需要把数据发向子网以外的主机，那么该如何构造分组呢？实际上，这个分组的 IP 地址是实际接受主机的地址（即子网外的地址），而 MAC 地址是网关路由器的 MAC 地址。因此这个分组会在子网内部被传递给网关，网关收到这个分组后，读取发送的 IP 地址，重新构造一个链路层分组，把其中的 MAC 地址修改成下一个接受这个分组的路由器的 MAC 地址</p>
+<h3 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h3><p>以太网的帧结构</p>
+<p><img src="http://media.coderluo.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/jcjmr.png" alt="链路层帧结构"></p>
+<ul>
+<li><p>前同步码 （8 字节）：前同步码的存在是为了让接收方的适配器与发送方的适配器在时钟上进行同步，虽然以太网链路层具有一个确定的速率，但是发送适配器可能相对于这个速率有一定的偏移，因此接受适配器需要一定的时间去确定发送方的速率。前同步码的前 7 个字节都是 10101010 这样的循环，最后一个字节是 10101011，最后的 11 就告诉了接收方重要的数据要来了</p>
+</li>
+<li><p>目的地址（6 字节）：接受适配器的 MAC 地址。接受适配器收到了目的地址与自己的 MAC 地址相同的以太网帧、或者目的地址是广播地址的帧，就会把帧的数据部分传递给网络层，否则丢弃这个帧</p>
+</li>
+<li><p>源地址（6 字节）：即发送方的网络适配器地址</p>
+</li>
+<li><p>类型字段（2 字节）：这个字段指明了这个帧的网络层使用了什么协议，比如 0x8086 是 ARP 分组</p>
+</li>
+<li><p>数据字段（46 ~ 1500 字节）：数据字段承载了 IP 数据报，以太网的最大传输单元 MTU 是 1500 字节，对于超过 1500 字节的 IP 数据报，以太网必须把数据报拆开成两个以太网帧。以太网的最小传输单元是 46 字节，所以对于小于 46 字节的数据，以太网会把数据填充到 46 字节。被填充的数据传送到接收方后，接收方的适配器会把 46 字节的数据交付给网络层，网络层读取 IP 数据报首部中的数据长度字段，并去除填充数据</p>
+</li>
+<li><p>CRC：CRC 的目的是让适配器能够检测以太网帧在传输过程中是否发生了错误</p>
+</li>
+</ul>
+<p>以太网提供无连接、不可靠的服务</p>
+<blockquote>
+<p><strong>在以前，以太网的链路是总线拓扑结构或者基于集线器的星型拓扑结构，因此是一条广播链路（一个接口收到比特将从其所有接口进行转发，如果同时两个接口收到比特将发生碰撞，生成该帧的结点必须重新传输）。</strong></p>
+</blockquote>
+<p>但是现在，多数以太网是基于<strong>交换机</strong>的星型拓扑结构，这意味着一条链路上只有首尾两个交换机，交换机不会向一个接口上发送超过一个帧，而且首尾交换机是全双工的，表示两个交换机可以能够同时向链路上发送以太网帧而不会发生碰撞，因此现在没有必要使用 MAC 协议了</p>
+<h2 id="Web-页面请求的里程"><a href="#Web-页面请求的里程" class="headerlink" title="Web 页面请求的里程"></a>Web 页面请求的里程</h2><hr>
+<p>Bob 拿着他的笔记本电脑到了图书馆内，连上图书馆的以太网，打开浏览器访问 <a href="http://www.google.com/" target="_blank" rel="noopener">www.google.com</a> 。在这一过程中，他的电脑究竟发出了哪些请求呢？</p>
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>DHCP 发生在电脑连上了网线与浏览器请求 Web 页面之间。刚插上网线的时候，电脑此时还没有一个 IP 地址，因此必须先获得一个地址，这是通过 DHCP 协议完成的：</p>
+<ol>
+<li><p>Bob 的电脑先要构造一个 DHCP 请求报文。这是一个 UDP 报文，目的端口是 67（DHCP 服务端口），源端口是 68（DHCP 客户端口）；目的地址是 255.255.255.255（广播地址），源地址是 0.0.0.0（本机地址）。因为电脑此时还不知道 DHCP 服务端的地址，而且自己也没有地址</p>
+</li>
+<li><p>DHCP 请求报文的 IP 数据报被放入以太网帧中。以太网帧的目的 MAC 地址是 FF:FF:FF:FF:FF:FF，使该帧将被广播到与交换机连接的所有设备（如果顺利也包括DHCP服务器），源 MAC 地址是 Bob 电脑的 MAC 地址（假设是 00:16:D3:23:68:8A）</p>
+</li>
+<li><p>这个包含DHCP请求的广播以太网帧是第一个由Bob设备发送到以太网交换机的帧，以太网帧被发送到交换机的一个接口上，交换机把这个帧广播到它所有的输出接口上，包括连接到路由器的端口；</p>
+</li>
+<li><p>运行着 DHCP （应用层，使用UDP协议）服务的路由器在它的一个接口拥有MAC地址 00:22:6B:45:1F:1B 收到了这个以太网帧，分解出 UDP 报文后向上传递到 67 端口的进程上</p>
+</li>
+<li><p>我们假设 DHCP 服务能够以 CIDR 块 68.85.2.0/24 分配 IP 地址，因此它分配了地址 68.86.2.101 给 Bob 的电脑。DHCP 服务生成一个 DHCP ACK 报文，报文中包含 68.86.2.101 地址、DNS 服务器的 IP 地址（68.87.71.226）、默认网关路由器的 IP 地址（65.85.2.1）、子网块（68.85.2.0/24），这个报文被放入一个 UDP 报文，UDP报文段被放入一个IP数据报中，IP数据报再被放入一个以太网帧中。以太网帧的源 MAC 地址是路由器接收到请求的接口的地址（00:22:6B:45:1F:1B），目的 MAC 地址是 Bob 的电脑的 MAC 地址（00:16:D3:23:68:8A）</p>
+</li>
+<li><p>以太网帧被路由器发送到交换机上。交换机是自学习的，它知道 Bob 的 DHCP 请求报文是从自己的哪个接口收到的，因此会把这个以太网帧也发送到这个接口上</p>
+</li>
+<li><p>Bob 接收到了 DHCP ACK 的以太网帧，从中抽取IP数据报，在从IP数据报中抽取UDP报文段，再从UDP报文段中抽取DCHP ACK报文，取出了分配的 IP 地址、DNS 服务器地址、默认网关地址、子网块等信息。Bob 的笔记本把所有目的地址是 68.85.2.0/24 之外的报文都发送给默认网关。到了这里，Bob 的电脑就算已经连上互联网了</p>
+</li>
+</ol>
+<h3 id="DNS-与-ARP"><a href="#DNS-与-ARP" class="headerlink" title="DNS 与 ARP"></a>DNS 与 ARP</h3><p>这时 Bob 的电脑已经能连上网了，当他键入 <a href="http://www.google.com/" target="_blank" rel="noopener">www.google.com</a> 时，并不知道这个域名对应的 IP 地址是什么，因此需要借助于 DNS 协议。但是在发送 DNS 请求之前，还需要解决一个问题：Bob 的电脑这时并不知道默认网关的 MAC 地址。在发送 DNS 请求之前，必须先发送 ARP 请求获得网关的 MAC 地址</p>
+<ol>
+<li><p>Bob 的电脑生成一个目的地址是 65.85.2.1 的 ARP 查询报文，目的 MAC 地址是 FF:FF:FF:FF:FF:FF 。这个以太网帧被发送给交换机后，交换机把这个帧发送给所有的设备，包括网关路由器</p>
+</li>
+<li><p>默认网关在收到 ARP 查询报文后，发现报文中的目的地址与自己的地址匹配，因此网关准备一个 ARP 回答，在其中包含了自己的 MAC 地址（00:22:6B:45:1F:1B），装入以太网帧中，目的地址是 00:16:D3:23:68:8A，交付给交换机，再由交换机交付给Bob</p>
+</li>
+<li><p>路由器接受到 ARP 回答报文后，交付给 Bob 的电脑，Bob 的电脑从中得知了网关的 MAC 地址</p>
+</li>
+<li><p>Bob 的电脑此时终于能构造 DNS 报文查询域名的 IP 地址了。它构造的 DNS 报文的目的 IP 地址是 68.87.71.226，目的 MAC 地址是 00:22:6B:45:1F:1B（网关），交换机收到这个帧后把它发送给网关路由器</p>
+</li>
+</ol>
+<h3 id="开始-DNS-查询"><a href="#开始-DNS-查询" class="headerlink" title="开始 DNS 查询"></a>开始 DNS 查询</h3><ol>
+<li>DNS 查询报文发送给了网关，网关根据 IP 数据包的目的地址，就这个报文重新封装，发送给了 DNS 服务器</li>
+<li>DNS 服务器收到了查询报文，在自己的 DNS 数据库中找到与 <a href="http://www.google.com/" target="_blank" rel="noopener">www.google.com</a> 匹配的记录，将这条记录变成 DNS 回答报文，使用 UDP 协议发送给 Bob 的电脑</li>
+<li>Bob 的电脑收到了 DNS 回答报文后，终于知道了 <a href="http://www.google.com/" target="_blank" rel="noopener">www.google.com</a> 的 IP 地址，可以开始发送 HTTP 请求了</li>
+</ol>
+<p><img src="http://media.coderluo.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/my3om.png" alt=""></p>
+<p><img src="http://media.coderluo.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/83ugo.png" alt=""></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《chapter5-链路层》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/14/ji-suan-ji-wang-luo/chapter5-lian-lu-ceng/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                coderluo
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd1cd88714fe64af1ff76',
+        clientSecret: '22f364825012994d3cc9e5a08f63ad13d074829c',
+        repo: 'blog.coderluo',
+        owner: 'coderluojust',
+        admin: "coderluojust",
+        id: '2019-09-14T15-15-23',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/09/14/ji-suan-ji-wang-luo/chapter6-wang-luo-an-quan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="chapter6-网络安全">
+                        
+                        <span class="card-title">chapter6-网络安全</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            计算机网络中的两个节点希望安全通信，需要具有以下的特性
+
+机密性。这说明通信的内容只有发送方和接收方才能知道，窃听者截获报文后也无法理解报文的内容
+报文完整性。发送方和接收方希望报文在传输过程中没有被篡改
+端点鉴别。发送方和接收方都能确定另
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/网络安全/" target="_blank">
+                        <span class="chip bg-color">网络安全</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/14/ji-suan-ji-wang-luo/chapter4-wang-luo-ceng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="chapter4-网络层">
+                        
+                        <span class="card-title">chapter4-网络层</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            网络层提供的两种服务虚电路服务 可靠通信应当由网络来保证数据报服务 可靠通信应当由用户主机来保证因特网网络层向上只提供简单灵活的、无连接的、尽最大努力交付的数据报服务。
+转发和路由选择转发和路由选择这两个概念很重要，一定要区分开，他们的严格
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/网络层/" target="_blank">
+                        <span class="chip bg-color">网络层</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="http://coderluo.top/" target="_blank">coderluo</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/coderluojust/blog.coderluo" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">43.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("09/27/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/coderluojust" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:coderluojust@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=769217278" class="tooltipped" data-tooltip="QQ联系我: 769217278" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/ccgogoing/activities" data-tooltip="关注我的知乎: https://www.zhihu.com/people/ccgogoing/activities" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

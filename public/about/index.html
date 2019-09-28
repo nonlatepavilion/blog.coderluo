@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="关于, coderluo">
+    <meta name="keywords" content="关于, 程序员小罗, coderluo">
     <meta name="description" content="关于 | 程序员小罗">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -24,6 +24,10 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
         
     </style>
 
@@ -345,21 +349,21 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/" target="_blank">1</a></span>
+    <span class="count"><a href="/" target="_blank">15</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">1</a></span>
+    <span class="count"><a href="/categories" target="_blank">9</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">2</a></span>
+    <span class="count"><a href="/tags" target="_blank">15</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -374,21 +378,21 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/" target="_blank">1</a></span>
+    <span class="count"><a href="/" target="_blank">15</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">1</a></span>
+    <span class="count"><a href="/categories" target="_blank">9</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">2</a></span>
+    <span class="count"><a href="/tags" target="_blank">15</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -543,7 +547,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,1],
+                data: [0,0,0,0,0,0,0,0,0,0,1,3,10],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -585,7 +589,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Zookeeper","value":1}],
+                data: [{"name":"Zookeeper","value":4},{"name":"操作系统","value":2},{"name":"Docker","value":1},{"name":"JAVA","value":1},{"name":"JVM","value":0},{"name":"Mybatis","value":0},{"name":"源码","value":0},{"name":"源码阅读","value":1},{"name":"计算机网络","value":6}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -609,7 +613,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         xAxis: [
             {
                 type: 'category',
-                data: ["Paxos","Zookeeper"]
+                data: ["Zookeeper","CSAPP","Docker","Paxos","源码分析","Zab","线程堆栈","链路层","网络安全","网络层"]
             }
         ],
         yAxis: [
@@ -622,7 +626,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [1,1],
+                data: [4,2,2,1,1,1,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -739,14 +743,92 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/Zookeeper/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Zookeeper</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Docker/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Docker</span>
+            </a>
+            
+            
+            
+            <a href="/tags/CSAPP/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">CSAPP</span>
+            </a>
+            
+            
+            
             <a href="/tags/Paxos/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">Paxos</span>
             </a>
             
             
             
-            <a href="/tags/Zookeeper/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">Zookeeper</span>
+            <a href="/tags/源码分析/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">源码分析</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Zab/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Zab</span>
+            </a>
+            
+            
+            
+            <a href="/tags/线程堆栈/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">线程堆栈</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Mybatis/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Mybatis</span>
+            </a>
+            
+            
+            
+            <a href="/tags/源码/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">源码</span>
+            </a>
+            
+            
+            
+            <a href="/tags/网络层/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">网络层</span>
+            </a>
+            
+            
+            
+            <a href="/tags/传输层/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">传输层</span>
+            </a>
+            
+            
+            
+            <a href="/tags/应用层/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">应用层</span>
+            </a>
+            
+            
+            
+            <a href="/tags/因特网/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">因特网</span>
+            </a>
+            
+            
+            
+            <a href="/tags/网络安全/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">网络安全</span>
+            </a>
+            
+            
+            
+            <a href="/tags/链路层/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">链路层</span>
             </a>
             
             
@@ -809,11 +891,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         <div class="col s12 m8 l8 copy-right">
             本站由&nbsp;&copy;<a href="http://coderluo.top/" target="_blank">coderluo</a>&nbsp;基于
             <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <a href="https://github.com/coderluojust/blog.coderluo" target="_blank">Matery</a>&nbsp;主题搭建
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.7k</span>&nbsp;字
+                class="white-color">43.7k</span>&nbsp;字
             
             
             

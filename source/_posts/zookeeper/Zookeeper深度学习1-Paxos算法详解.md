@@ -5,7 +5,6 @@ tags:
   - Zookeeper
 date: 2019-09-05 19:45:25
 categories: Zookeeper
-cover: true
 img: http://media.coderluo.top/img/20190928015012.png
 ---
 

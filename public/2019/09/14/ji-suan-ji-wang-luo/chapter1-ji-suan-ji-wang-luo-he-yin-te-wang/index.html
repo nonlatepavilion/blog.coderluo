@@ -1,0 +1,1128 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="chapter1-计算机网络和因特网, 程序员小罗, coderluo">
+    <meta name="description" content="
+最近参加了码农翻身的读书活动，目标是读完《计算机网络 自顶向下方法》 这本书，这篇文章将记录第一周所看到的本地第一章的相关内容。
+
+学习计算机网络首先学习下什么是因特网？描述这个问题需要从两个方面论述。
+
+具体构成描述
+因特网是一个世界范">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>chapter1-计算机网络和因特网 | 程序员小罗</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">程序员小罗</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/" class="waves-effect waves-light">
+						
+						<i class="fa fa-home"></i>
+						
+						<span>首页</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/tags" class="waves-effect waves-light">
+						
+						<i class="fa fa-tags"></i>
+						
+						<span>标签</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/categories" class="waves-effect waves-light">
+						
+						<i class="fa fa-bookmark"></i>
+						
+						<span>分类</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/archives" class="waves-effect waves-light">
+						
+						<i class="fa fa-archive"></i>
+						
+						<span>归档</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/about" class="waves-effect waves-light">
+						
+						<i class="fa fa-user-circle-o"></i>
+						
+						<span>关于</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/friends" class="waves-effect waves-light">
+						
+						<i class="fa fa-address-book"></i>
+						
+						<span>友情链接</span>
+					</a>
+          
+        </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">程序员小罗</div>
+        <div class="logo-desc">
+            
+            热爱编程，更热爱生活
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/coderluojust/blog.coderluo" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/coderluojust/blog.coderluo" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        chapter1-计算机网络和因特网
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/因特网/" target="_blank">
+                                <span class="chip bg-color">因特网</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                计算机网络
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-14
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.9k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        9 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>最近参加了码农翻身的读书活动，目标是读完《计算机网络 自顶向下方法》 这本书，这篇文章将记录第一周所看到的本地第一章的相关内容。</p>
+</blockquote>
+<h2 id="学习计算机网络首先学习下什么是因特网？"><a href="#学习计算机网络首先学习下什么是因特网？" class="headerlink" title="学习计算机网络首先学习下什么是因特网？"></a>学习计算机网络首先学习下什么是因特网？</h2><p>描述这个问题需要从两个方面论述。</p>
+<ol>
+<li>具体构成描述<blockquote>
+<p>因特网是一个世界范围的计算机网络，即它一个互联了遍及全世界的数以万计的计算设备的网络。所有与因特网相连的设备都称为<strong>主机</strong>或者<strong>端系统</strong>。</p>
+</blockquote>
+</li>
+</ol>
+<p>端系统通过<strong>通信链路</strong>和<strong>分组交换机</strong>连接到一起。 通信链路是由不同的物理媒体组成。这些物理媒体包括同轴电缆、铜线、光纤和无线电频谱。不同的链路能够以不同的速率传输数据，链路的传输速率是以 比特/每秒 度量，（bit/s,或 bps）。当一台端系统要向另一台端系统发送数据时，发送端系统将数据分段，并为没段加上首部字节。由此形成的信息包用计算机网络的术语称之为<strong>分组</strong>。 这些分组通过网络发送到目的端系统，在那里被装配成初始数据。</p>
+<p>分组交换机从它的一条入通信链路接收到到达的分组，并从它的一条出通信链路转发该分组。目前常见的分组交换机类型是 <strong>路由器</strong> 和 <strong>链路层交换机</strong>。 这两种类型的交换机朝着最终目的地转发分组。链路层交换机通常用于接入网中，而路由器常用于网络核心中。 从发送端系统到接收端系统，一个分组所经历的一系列通信链路和分组交换机称为通过该网络的路径。</p>
+<p>端系统通过 <strong>因特网服务提供商</strong>（Internet Servicve Provider，ISP）接入因特网，包括如本地电缆或者电话公司那样的住宅区ISP 、公司ISP、大学 ISP，以及那些在机场等公共场所提供的WIFI 接入的ISP。 每个ISP 其实是一个由多个分组交换机和多段通信链路组成的网络。 各ISP 为端系统提供了各种不同类型的网络接入，包括线缆调制解调器或DSL 那样的住宅宽带接入、高速局域网接入、无线接入和 56kbps拨号调制解调器计入。ISP 也为内容提供者提供因特网接入服务，将Web 站点直接接入因特网。因特网就是将端系统彼此互联，因此为端系统提供接入的ISP 也必须互联。低层的ISP通过国家的、国际的高层ISP（如AT&amp;T、Sprint，联通、移动）互联起来。高层ISP 是由通过高速光纤链路互联的高速路由器组成的。无论是高层还是底层ISP网络，它们每个都是独立管理，运行着IP 协议。</p>
+<p>端系统、分组交换机和其他因特网部件都要运行一系列协议，这些协议控制因特网中信息的接收和发送。TCP 和 IP 是因特网中两个最为重要的协议。 IP协议定义了在路由器和端系统之间发送和接收的分组格式。因特网的主要协议统称为 <strong>TCP/IP</strong>。</p>
+<p>为了使各个协议以及作用取得一致，方便人们能够创造协同工作的系统和产品，因此需要制定标准。 <strong>因特网标准</strong> 由 <strong>因特网工程任务组</strong> （Internet Engineering Task Force， IETF）研发。IETF 的 标准文档被称为 <strong>请求评论（Request For Comment， RFC）</strong>。</p>
+<ol start="2">
+<li>服务描述</li>
+</ol>
+<p>生活中我们都是用很多 app 这些被称为分布式应用程序。 大家思考下，运行在一个端系统上的应用程序怎样才能指令因特网向运行在另一个端系统上的软件发送数据呢？</p>
+<p>与因特网相连的短息用提供了一个 <strong>应用程序编程接口</strong>（Application Ptogramming Interface， API），该API 规定了运行在一个端系统上的软件请求因特网基础设施向运行在另一个端系统上的特定目的地软件交付数据的方式。因特网 API 是一套发送软件必须遵循的规则集合，因为因特网能够将数据交付给目的地。</p>
+<p>上面我们已经给出了因特网的两种描述方法，但是整个因特网，包括数据传输经过各层的协议，后面也会继续学习，分享出来。</p>
+<blockquote>
+<p>在因特网中，凡是涉及两个或多个远程通信实体的所有活动都受协议的制约。 例如，在两台物理上连接的计算机中，硬件实现的协议控制了在两块网络接口卡间的 “线上” 的比特流。</p>
+</blockquote>
+<h2 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h2><p>顾名思义，网络边缘就是指位于各处的应用程序和端系统。 这里我觉得比较有意思的概念就是端系统接入网以及物理媒体。</p>
+<h3 id="接入网"><a href="#接入网" class="headerlink" title="接入网"></a>接入网</h3><p>接入网： 指将端系统连接到其边缘路由器的物理链路。<br>边缘路由器： 是指端系统到任何其他远程端系统的路径上的第一台路由器。</p>
+<h3 id="物理媒体"><a href="#物理媒体" class="headerlink" title="物理媒体"></a>物理媒体</h3><p>物理媒体划分为两类： <strong>引导型媒体</strong> 和 <strong>非引导型媒体</strong>。对于引导型媒体，电波沿着固体媒体前行，如光缆、双绞铜线或同轴电缆。对于非引导型媒体，电波在空气或外层空间中中传播，例如在无线局域网或数字卫星频道中。</p>
+<h2 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h2><p>这一节主要学习了 分组交换、电路交换、网络的网络。</p>
+<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p>  在各种网络应用中，端系统彼此交换报文。 报文能够包含协议设计者需要的任何东西。为了源系统向目的系统发送一个报文，源将长报文划分为较小的数据块，称之为分组。在源和目的之间，每个分组都通过通信链路和分组交换机（交换机主要有两类：路由器和链路层交换机）传送。 </p>
+<h3 id="在这里我们必须要知道的还有排队时延和分组丢失。"><a href="#在这里我们必须要知道的还有排队时延和分组丢失。" class="headerlink" title="在这里我们必须要知道的还有排队时延和分组丢失。"></a>在这里我们必须要知道的还有排队时延和分组丢失。</h3><p>每个分组交换机有多条链路与之相连。对于每条相连的链路，该分组交换机具有一个输出缓存（也称为输出队列），它用于存储路由器准备发往那条链路的分组。该输出缓存在分组交换机中起着重要的作用。如果到达的分组需要传输到某条链路，但发现该链路正忙于传输其他分组，该到达分组必须在该输出缓存中等待。这个就叫做输出缓存的排队时延。 因为缓存空间的大小是有限的，一个到达的分组可能发现该缓存已被其他等待传输的分组完全充满了。在此情况下，将出现 <strong>分组丢失（丢包）</strong>，到达的分组或已经排队的分组之一将被丢弃。</p>
+<h3 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h3><p>首先总结的说电路交换一般用于数据链路层。 </p>
+<p>在端系统通信会话期间，预留了端系统间通信沿路径所需要的资源（缓存，链路传输速率）。 在分组交换网络中，这些资源则不是预留的； 传统的电话网络是电路交换网络的例子。</p>
+<h2 id="分组交换网中的时延"><a href="#分组交换网中的时延" class="headerlink" title="分组交换网中的时延"></a>分组交换网中的时延</h2><p>这部分内容应该是对于平时开发工作中非常有用的一部分，一定要掌握其相关原理。</p>
+<p>分组从一台主机出发，通过一系列路由器传输，在另一台主机点（目的地）中结束它的历程。当分组从一个节点（主机或路由器）沿着这条路径到后续节点（主机或路由器），该分组在沿途的每个结点经受了几种不同类型的时延。这些时延最为重要的是 <strong>结点处理时延</strong>、<strong>排队时延</strong>、<strong>传输时延和传播时延</strong>，这些时延总体累计加起来是结点总时延。</p>
+<h3 id="处理时延"><a href="#处理时延" class="headerlink" title="处理时延"></a>处理时延</h3><p>检查分组首部和决定将该分组导向何处所需要的时间是处理时延的一部分。处理时延也能包括其他因素，如检查比特级别的差错所需要的时间，该差错出现在从上游结点向路由器传输这些分组比特的过程中。高速路由器的处理时延通常是微妙或更低的数量级。在这种结点处理之后，路由器将该分组引向通往下一个路由器链路之前的队列。</p>
+<p>​    </p>
+<h3 id="排队时延"><a href="#排队时延" class="headerlink" title="排队时延"></a>排队时延</h3><p>在队列中，当分组在链路上等待传输时，它经受排队时延。一个特定分组的排队时延长度将取决于先期到达的正在排队等待向链路传输的分组数量。如果该队列是空的，并且当前没有其他分组正在传输，则该分组的排队时延为0。 另一方面，如果流量很大，并且许多其他分组也在等待传输，该排队时延将很长。</p>
+<p>​    </p>
+<h3 id="传输时延"><a href="#传输时延" class="headerlink" title="传输时延"></a>传输时延</h3><p>假定分组以先到先服务的方式传输，这在分组交换网中是常见的方式，仅当所有已经到达的分组被传输后，才能传输刚到达的分组。用 L 比特表示该分组的长度，用R bps （即 b/s） 表示从路由器A 到路由器B 的链路传输速率。 例如，对于一条10 Mbps 的以太网链路，速率 R = 10Mbps；  传输时延是L/R。 这是将所有分组的比特推向链路所需要的时间。实际的传输时延通常在毫秒到微妙量级。</p>
+<h3 id="传播时延"><a href="#传播时延" class="headerlink" title="传播时延"></a>传播时延</h3><p>一旦一个比特被推向链路，该比特需要向路由器B传播。从该链路的起点到路由器B传播所需要的时间是传播时延。该比特以该链路的传播速率传播。 该传播速率取决于该链路的物理媒体（即光纤、双绞铜线等），其速率范围是 2 * 10（8） ~ 3 * 10（8） m/s，这等于或略小于光速。该传播时延等于两台路由器之间的距离除以传播速率。即传播时延是 d/s, 其中 d 是路由器A 和路由器B之间的距离，s是该链路的传播速率。一旦该分组的最后一个比特传播到B结点，该比特及前面的所有比特被存储于路由器B。整个过程随着路由器B执行转发而持续下去。在广域网中，传播时延为毫秒量级。</p>
+<p>​    </p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《chapter1-计算机网络和因特网》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/14/ji-suan-ji-wang-luo/chapter1-ji-suan-ji-wang-luo-he-yin-te-wang/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                coderluo
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd1cd88714fe64af1ff76',
+        clientSecret: '22f364825012994d3cc9e5a08f63ad13d074829c',
+        repo: 'blog.coderluo',
+        owner: 'coderluojust',
+        admin: "coderluojust",
+        id: '2019-09-14T14-58-01',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/09/14/ji-suan-ji-wang-luo/chapter2-ying-yong-ceng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="chapter2-应用层">
+                        
+                        <span class="card-title">chapter2-应用层</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+本周进入到第二章应用层的学习，不得不说自顶向下学习果然能激发兴趣，因为平时开发工作经常也就是和应用层打交道，但是对具体原理总是一知半解，随着这章的阅读，能让自己对我们开发的应用程序，是怎样利用网络实现其功能的，有了更深入的了解。
+
+我们日
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/应用层/" target="_blank">
+                        <span class="chip bg-color">应用层</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-2-zab-xie-yi-xiang-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Zookeeper深度学习2-Zab协议详解">
+                        
+                        <span class="card-title">Zookeeper深度学习2-Zab协议详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+今天讲解的主题是Zookeeper实现的基础协议–Zab协议（Zookeeper Atomic Broadcast），也称为zk原子广播协议。
+
+首先大家可能会有疑问，Zab和我们上一篇讲解的Paxos之间有什么区别和联系？别着急，带着这
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Zookeeper/" class="post-category" target="_blank">
+                                    Zookeeper
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Zookeeper/" target="_blank">
+                        <span class="chip bg-color">Zookeeper</span>
+                    </a>
+                    
+                    <a href="/tags/Zab/" target="_blank">
+                        <span class="chip bg-color">Zab</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="http://coderluo.top/" target="_blank">coderluo</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/coderluojust/blog.coderluo" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">43.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("09/27/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/coderluojust" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:coderluojust@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=769217278" class="tooltipped" data-tooltip="QQ联系我: 769217278" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/ccgogoing/activities" data-tooltip="关注我的知乎: https://www.zhihu.com/people/ccgogoing/activities" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

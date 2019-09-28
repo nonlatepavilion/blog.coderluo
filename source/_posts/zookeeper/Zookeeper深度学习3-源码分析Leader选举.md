@@ -273,5 +273,5 @@ proposedLeader == self.getId()) ?
 
 
 
-![img](https://oscimg.oschina.net/oscnet/2ce2160547f3619832c8ae314d478077cdb.jpg)
+![](https://oscimg.oschina.net/oscnet/2ce2160547f3619832c8ae314d478077cdb.jpg)
 

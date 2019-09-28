@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://coderluo.top/"/>
-  <updated>2019-09-27T13:31:14.033Z</updated>
+  <updated>2019-09-28T15:36:47.075Z</updated>
   <id>http://coderluo.top/</id>
   
   <author>
@@ -17,11 +17,275 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CSAPP-2-信息的表示和处理</title>
+    <link href="http://coderluo.top/2019/09/14/csapp/csapp-2-xin-xi-de-biao-shi-he-chu-li/"/>
+    <id>http://coderluo.top/2019/09/14/csapp/csapp-2-xin-xi-de-biao-shi-he-chu-li/</id>
+    <published>2019-09-14T07:42:15.000Z</published>
+    <updated>2019-09-28T15:36:47.075Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;如果能完全理解计算机系统以及它对应用程序的影响，那么恭喜你，你走上了一条为数不多的大牛道路。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本文是深入理解计算机系统的第二篇文章，接着上一篇我们讲解的计算机系统开篇-&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://coderluo.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="CSAPP" scheme="http://coderluo.top/tags/CSAPP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chapter6-网络安全</title>
+    <link href="http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter6-wang-luo-an-quan/"/>
+    <id>http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter6-wang-luo-an-quan/</id>
+    <published>2019-09-14T07:17:59.000Z</published>
+    <updated>2019-09-28T15:54:44.288Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;计算机网络中的两个节点希望安全通信，需要具有以下的特性&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;机密性&lt;/strong&gt;。这说明通信的内容只有发送方和接收方才能知道，窃听者截获报文后也无法理解报文的内容&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;报文完整性&lt;/strong&gt;。发送
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://coderluo.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="网络安全" scheme="http://coderluo.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chapter5-链路层</title>
+    <link href="http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter5-lian-lu-ceng/"/>
+    <id>http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter5-lian-lu-ceng/</id>
+    <published>2019-09-14T07:15:23.000Z</published>
+    <updated>2019-09-28T15:54:35.738Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本章接着前一章学习的网络层，更加深入来到下一层数据链路层。&lt;/p&gt;
+&lt;h2 id=&quot;链路层概述&quot;&gt;&lt;a href=&quot;#链路层概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://coderluo.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="链路层" scheme="http://coderluo.top/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chapter4-网络层</title>
+    <link href="http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter4-wang-luo-ceng/"/>
+    <id>http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter4-wang-luo-ceng/</id>
+    <published>2019-09-14T07:13:56.000Z</published>
+    <updated>2019-09-28T15:54:26.437Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;网络层提供的两种服务&quot;&gt;&lt;a href=&quot;#网络层提供的两种服务&quot; class=&quot;headerlink&quot; title=&quot;网络层提供的两种服务&quot;&gt;&lt;/a&gt;网络层提供的两种服务&lt;/h2&gt;&lt;p&gt;虚电路服务 可靠通信应当由网络来保证&lt;br&gt;数据报服务
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://coderluo.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="网络层" scheme="http://coderluo.top/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chapter3-传输层</title>
+    <link href="http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter3-chuan-shu-ceng/"/>
+    <id>http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter3-chuan-shu-ceng/</id>
+    <published>2019-09-14T07:07:08.000Z</published>
+    <updated>2019-09-28T15:54:18.452Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;这周来到，《自算计网络自顶向下》 这本书的第三章，传输层的学习。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;运输层和网络层的关系&quot;&gt;&lt;a href=&quot;#运输层和网络层的关系&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://coderluo.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="传输层" scheme="http://coderluo.top/tags/%E4%BC%A0%E8%BE%93%E5%B1%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chapter2-应用层</title>
+    <link href="http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter2-ying-yong-ceng/"/>
+    <id>http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter2-ying-yong-ceng/</id>
+    <published>2019-09-14T07:01:57.000Z</published>
+    <updated>2019-09-28T15:54:05.907Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;本周进入到第二章应用层的学习，不得不说自顶向下学习果然能激发兴趣，因为平时开发工作经常也就是和应用层打交道，但是对具体原理总是一知半解，随着这章的阅读，能让自己对我们开发的应用程序，是怎样利用网络实现其功能的，有了更深入的了解。&lt;/p&gt;
+&lt;/blo
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://coderluo.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="应用层" scheme="http://coderluo.top/tags/%E5%BA%94%E7%94%A8%E5%B1%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chapter1-计算机网络和因特网</title>
+    <link href="http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter1-ji-suan-ji-wang-luo-he-yin-te-wang/"/>
+    <id>http://coderluo.top/2019/09/14/ji-suan-ji-wang-luo/chapter1-ji-suan-ji-wang-luo-he-yin-te-wang/</id>
+    <published>2019-09-14T06:58:01.000Z</published>
+    <updated>2019-09-28T15:42:52.561Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;最近参加了码农翻身的读书活动，目标是读完《计算机网络 自顶向下方法》 这本书，这篇文章将记录第一周所看到的本地第一章的相关内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;学习计算机网络首先学习下什么是因特网？&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://coderluo.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="因特网" scheme="http://coderluo.top/tags/%E5%9B%A0%E7%89%B9%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper深度学习2-Zab协议详解</title>
+    <link href="http://coderluo.top/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-2-zab-xie-yi-xiang-jie/"/>
+    <id>http://coderluo.top/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-2-zab-xie-yi-xiang-jie/</id>
+    <published>2019-09-08T14:48:16.000Z</published>
+    <updated>2019-09-28T15:55:44.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;今天讲解的主题是Zookeeper实现的基础协议–&lt;strong&gt;Zab协议（Zookeeper Atomic
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/categories/Zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/tags/Zookeeper/"/>
+    
+      <category term="Zab" scheme="http://coderluo.top/tags/Zab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper深度学习3-源码分析-Leader选举</title>
+    <link href="http://coderluo.top/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-3-yuan-ma-fen-xi-leader-xuan-ju/"/>
+    <id>http://coderluo.top/2019/09/08/zookeeper/zookeeper-shen-du-xue-xi-3-yuan-ma-fen-xi-leader-xuan-ju/</id>
+    <published>2019-09-08T14:48:16.000Z</published>
+    <updated>2019-09-28T15:55:47.460Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;前两篇文章已经对Zookeeper是什么,能做什么,以及Paxos算法和底层使用的Zab协议做了详细的描述（如果你还不了解Paxos算法和Zab协议建议先到文稿末尾查看前两篇再来学习本篇文章）,相信大家一定都有了自己的理解,那么本文就开始真正走进Z
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/categories/Zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/tags/Zookeeper/"/>
+    
+      <category term="源码分析" scheme="http://coderluo.top/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Zookeeper深度学习1-Paxos算法详解</title>
-    <link href="http://coderluo.top/2019/09/05/zookeeper-shen-du-xue-xi-1-paxos-suan-fa-xiang-jie/"/>
-    <id>http://coderluo.top/2019/09/05/zookeeper-shen-du-xue-xi-1-paxos-suan-fa-xiang-jie/</id>
+    <link href="http://coderluo.top/2019/09/05/zookeeper/zookeeper-shen-du-xue-xi-1-paxos-suan-fa-xiang-jie/"/>
+    <id>http://coderluo.top/2019/09/05/zookeeper/zookeeper-shen-du-xue-xi-1-paxos-suan-fa-xiang-jie/</id>
     <published>2019-09-05T11:45:25.000Z</published>
-    <updated>2019-09-27T13:31:14.033Z</updated>
+    <updated>2019-09-28T15:55:38.185Z</updated>
     
     <summary type="html">
     
@@ -40,9 +304,159 @@
       <category term="Zookeeper" scheme="http://coderluo.top/categories/Zookeeper/"/>
     
     
+      <category term="Zookeeper" scheme="http://coderluo.top/tags/Zookeeper/"/>
+    
       <category term="Paxos" scheme="http://coderluo.top/tags/Paxos/"/>
     
+  </entry>
+  
+  <entry>
+    <title>CSAPP-1:计算机系统漫游</title>
+    <link href="http://coderluo.top/2019/08/30/csapp/csapp-1-ji-suan-ji-xi-tong-man-you/"/>
+    <id>http://coderluo.top/2019/08/30/csapp/csapp-1-ji-suan-ji-xi-tong-man-you/</id>
+    <published>2019-08-30T15:43:26.000Z</published>
+    <updated>2019-09-28T15:06:56.808Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;本周开始了CSAPP的读书计划，规划已久，终于要开动了。之前自己也零散看过，不得不说这本书有难度都没坚持下去，这次跟着码农翻身小伙伴们一起打卡这本书。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CSAPP这本书不用多说绝对经典中的经典，如果想成为一
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://coderluo.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="CSAPP" scheme="http://coderluo.top/tags/CSAPP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker搭建Zookeeper集群</title>
+    <link href="http://coderluo.top/2019/08/28/zookeeper/docker-da-jian-zookeeper-ji-qun/"/>
+    <id>http://coderluo.top/2019/08/28/zookeeper/docker-da-jian-zookeeper-ji-qun/</id>
+    <published>2019-08-28T14:42:30.000Z</published>
+    <updated>2019-09-28T14:41:20.645Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;大家好，我是程序员小罗，这是我的技术学习笔记。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://coderluo.top/categories/Zookeeper/"/>
+    
+    
       <category term="Zookeeper" scheme="http://coderluo.top/tags/Zookeeper/"/>
+    
+      <category term="Docker" scheme="http://coderluo.top/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker入门</title>
+    <link href="http://coderluo.top/2019/08/17/docker/docker-ru-men/"/>
+    <id>http://coderluo.top/2019/08/17/docker/docker-ru-men/</id>
+    <published>2019-08-17T00:45:42.000Z</published>
+    <updated>2019-09-28T15:24:39.637Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;镜像&quot;&gt;&lt;a href=&quot;#镜像&quot; class=&quot;headerlink&quot; title=&quot;镜像&quot;&gt;&lt;/a&gt;镜像&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;镜像是Docker运行容器的前提&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;获取镜像&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="http://coderluo.top/categories/Docker/"/>
+    
+    
+      <category term="Docker" scheme="http://coderluo.top/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis源码分析</title>
+    <link href="http://coderluo.top/2019/07/27/java/mybatis-yuan-ma-fen-xi/"/>
+    <id>http://coderluo.top/2019/07/27/java/mybatis-yuan-ma-fen-xi/</id>
+    <published>2019-07-27T02:18:30.000Z</published>
+    <updated>2019-09-28T15:35:49.253Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;这篇文章我们来深入阅读下Mybatis的源码，希望以后可以对底层框架不那么畏惧，学习框架设计中好的思想；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;架构原理&quot;&gt;&lt;a href=&quot;#架构原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="源码阅读" scheme="http://coderluo.top/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+    
+      <category term="Mybatis" scheme="http://coderluo.top/tags/Mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java线程堆栈分析</title>
+    <link href="http://coderluo.top/2017/12/26/java/java-xian-cheng-dui-zhan-fen-xi/"/>
+    <id>http://coderluo.top/2017/12/26/java/java-xian-cheng-dui-zhan-fen-xi/</id>
+    <published>2017-12-26T14:10:28.000Z</published>
+    <updated>2019-09-28T15:28:58.582Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;不知觉间工作已有一年了，闲下来的时候总会思考下，作为一名Java程序员，不能一直停留在开发业务使用框架上面。老话说得好，机会是留给有准备的人的，因此，开始计划看一些Java底层一点的东西，尝试开始在学习的过程中写博客，希望和大家一起交流学习。&lt;/p
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JAVA" scheme="http://coderluo.top/categories/JAVA/"/>
+    
+    
+      <category term="线程堆栈" scheme="http://coderluo.top/tags/%E7%BA%BF%E7%A8%8B%E5%A0%86%E6%A0%88/"/>
     
   </entry>
   
