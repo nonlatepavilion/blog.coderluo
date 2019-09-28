@@ -6,7 +6,7 @@
 title: 程序员小罗
 subtitle: 程序员小罗
 description: 热爱编程，更热爱生活
-keywords: coderluo
+keywords: 程序员小罗, coderluo
 author: coderluo
 language: zh-CN
 timezone:
@@ -85,7 +85,7 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@coderluo.top:~/blog.coderluo.git
+  repo: git@www.coderluo.top:~/blog.coderluo.git
 
 githubEmojis:
   enable: true

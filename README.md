@@ -10,6 +10,10 @@
 如果想要复用，直接clone到本地，安装如下插件即可。
 
 ```
+npm install hexo
+npm install hexo-cli -g
+npm install
+npm install hexo-deployer-git
 npm install hexo-filter-github-emojis --save
 npm i -S hexo-prism-plugin
 npm install hexo-generator-search --save
