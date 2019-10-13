@@ -5,6 +5,7 @@ tags:
   - centos8
 category: Docker
 date: 2019-10-13 11:17:38
+img: http://media.coderluo.top/dockerdocker%E5%AE%89%E8%A3%85centos.jpg
 ---
 
 
@@ -18,7 +19,7 @@ date: 2019-10-13 11:17:38
 
 
 
-# 安装centos8系统
+## 安装centos8系统
 
 
 
@@ -52,7 +53,7 @@ docker exec -it centos8 /bin/bash
 
 
 
-# 安装常用工具
+## 安装常用工具
 
 
 
@@ -91,7 +92,7 @@ netstat -antp | grep sshd
 
 
 
-# 开启docker-centos8 ssh远程连接
+## 开启docker-centos8 ssh远程连接
 
 
 
@@ -117,7 +118,7 @@ netstat -antp | grep sshd
 
 
 
-# 结束语
+## 结束语
 
 
 

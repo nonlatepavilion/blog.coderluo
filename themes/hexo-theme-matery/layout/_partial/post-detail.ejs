@@ -1,3 +1,4 @@
+<div  id="container">
 <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
@@ -101,6 +102,7 @@
 
     <%- partial('_partial/prev-next') %>
 </div>
+</div>
 
 <% if (theme.copyright.enable) { %>
 <script>
@@ -140,3 +142,15 @@
     });
 </script>
 <% } %>
+
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container',
+        blogId: '17073-1570954036672-848',
+        name: '爱上敲代码',
+        qrcode: 'https://mmbiz.qpic.cn/mmbiz_jpg/hWwZyaR5AkWs4qCWwnYD12WlBA4ZKBia0cCiam6wdha1WfEMDvKk1fDu8ibSGiaPAzh0z28sBxLxB2wia8QVZyCYYqw/0?wx_fmt=jpeg',
+        keyword: 'hqyzm',
+    });
+</script>
