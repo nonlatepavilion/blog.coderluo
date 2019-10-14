@@ -5,7 +5,7 @@ tags:
   - centos8
 category: Docker
 date: 2019-10-13 11:17:38
-img: http://media.coderluo.top/dockerdocker%E5%AE%89%E8%A3%85centos.jpg
+img: http://media.coderluo.top/docker%E5%AE%89%E8%A3%85centos%E5%B0%81%E9%9D%A2.png
 ---
 
 
