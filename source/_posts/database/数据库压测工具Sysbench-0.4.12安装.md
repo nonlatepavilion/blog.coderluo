@@ -120,6 +120,7 @@ Threads fairness:
 ##  sysbench 查看帮助
 
 ```shell
+[root@izwz909ewdz83smewux7a7z bin]# ./sysbench --help
 Usage:
   sysbench [general-options]... --test=<test-name> [test-options]... command
 
@@ -172,51 +173,10 @@ See 'sysbench --test=<name> help' for a list of options for each test.
 
 ## sysbench 中的测试类型大致可以分成内置的，lua脚本自定义的测试
 
-1. 内置: fileio 、cpu 、memory 、threads 、 mutex 
-2. lua脚本自定义型：sysbench 自身内涵了一些测试脚本放在了安装目录下:
+1. 内置: fileio 、cpu 、memory 、threads 、 mutex ;
+2. lua脚本自定义型：sysbench 自身内涵了一些测试脚本放在了安装目录下;
 
-```shell
-查看帮忙命令:
-[root@izwz909ewdz83smewux7a7z bin]# ./sysbench --help
-Usage:
-  sysbench [general-options]... --test=<test-name> [test-options]... command
 
-General options:
-  --num-threads=N             number of threads to use [1]
-  --max-requests=N            limit for total number of requests [10000]
-  --max-time=N                limit for total execution time in seconds [0]
-  --forced-shutdown=STRING    amount of time to wait after --max-time before forcing shutdown [off]
-  --thread-stack-size=SIZE    size of stack per thread [32K]
-  --init-rng=[on|off]         initialize random number generator [off]
-  --seed-rng=N                seed for random number generator, ignored when 0 [0]
-  --tx-rate=N                 target transaction rate (tps) [0]
-  --tx-jitter=N               target transaction variation, in microseconds [0]
-  --report-interval=N         periodically report intermediate statistics with a specified interval in seconds. 0 disables intermediate reports [0]
-  --report-checkpoints=[LIST,...]dump full statistics and reset all counters at specified points in time. The argument is a list of comma-separated values representing the amount of time in seconds elapsed from start of test when report checkpoint(s) must be performed. Report checkpoints are off by default. []
-  --test=STRING               test to run
-  --debug=[on|off]            print more debugging info [off]
-  --validate=[on|off]         perform validation checks where possible [off]
-  --help=[on|off]             print help and exit
-  --version=[on|off]          print version and exit
-
-Log options:
-  --verbosity=N      verbosity level {5 - debug, 0 - only critical messages} [4]
-
-  --percentile=N      percentile rank of query response times to count [95]
-
-Compiled-in tests:
-  fileio - File I/O test
-  cpu - CPU performance test
-  memory - Memory functions speed test
-  threads - Threads subsystem performance test
-  mutex - Mutex performance test
-  oltp - OLTP test
-
-Commands: prepare run cleanup help version
-
-See 'sysbench --test=<name> help' for a list of options for each test.
-
-```
 
 
 
