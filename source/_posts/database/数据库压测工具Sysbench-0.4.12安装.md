@@ -176,7 +176,68 @@ See 'sysbench --test=<name> help' for a list of options for each test.
 1. 内置: fileio 、cpu 、memory 、threads 、 mutex ;
 2. lua脚本自定义型：sysbench 自身内涵了一些测试脚本放在了安装目录下;
 
+查询自定lua脚本支持的命令行选项，这里就不翻译了，都不难，大家一定可以看懂的：
 
+``` shell
+[root@izwz909ewdz83smewux7a7z bin]# ./sysbench --test=oltp help
+sysbench 0.4.12.10:  multi-threaded system evaluation benchmark
+
+oltp options:
+  --oltp-test-mode=STRING                  test type to use {simple,complex,nontrx,sp} [complex]
+  --oltp-reconnect-mode=STRING             reconnect mode {session,transaction,query,random} [session]
+  --oltp-sp-name=STRING                    name of store procedure to call in SP test mode []
+  --oltp-read-only=[on|off]                generate only 'read' queries (do not modify database) [off]
+  --oltp-avoid-deadlocks=[on|off]          generate update keys in increasing order to avoid deadlocks [off]
+  --oltp-skip-trx=[on|off]                 skip BEGIN/COMMIT statements [off]
+  --oltp-range-size=N                      range size for range queries [100]
+  --oltp-point-selects=N                   number of point selects [10]
+  --oltp-use-in-statement=N                Use IN-statement with 10 PK lookups per query [0]
+  --oltp-simple-ranges=N                   number of simple ranges [1]
+  --oltp-sum-ranges=N                      number of sum ranges [1]
+  --oltp-order-ranges=N                    number of ordered ranges [1]
+  --oltp-distinct-ranges=N                 number of distinct ranges [1]
+  --oltp-index-updates=N                   number of index update [1]
+  --oltp-non-index-updates=N               number of non-index updates [1]
+  --oltp-nontrx-mode=STRING                mode for non-transactional test {select, update_key, update_nokey, insert, delete} [select]
+  --oltp-auto-inc=[on|off]                 whether AUTO_INCREMENT (or equivalent) should be used on id column [on]
+  --oltp-connect-delay=N                   time in microseconds to sleep after connection to database [10000]
+  --oltp-user-delay-min=N                  minimum time in microseconds to sleep after each request [0]
+  --oltp-user-delay-max=N                  maximum time in microseconds to sleep after each request [0]
+  --oltp-table-name=STRING                 name of test table [sbtest]
+  --oltp-table-size=N                      number of records in test table [10000]
+  --oltp-dist-type=STRING                  random numbers distribution {uniform,gaussian,special} [special]
+  --oltp-dist-iter=N                       number of iterations used for numbers generation [12]
+  --oltp-dist-pct=N                        percentage of values to be treated as 'special' (for special distribution) [1]
+  --oltp-dist-res=N                        percentage of 'special' values to use (for special distribution) [75]
+  --oltp-point-select-mysql-handler=[on|off]Use MySQL HANDLER for point select [off]
+  --oltp-point-select-all-cols=[on|off]    select all columns for the point-select query [off]
+  --oltp-secondary=[on|off]                Use a secondary index in place of the PRIMARY index [off]
+  --oltp-num-partitions=N                  Number of partitions used for test table [0]
+  --oltp-num-tables=N                      Number of test tables [1]
+
+General database options:
+
+  --db-driver=STRING  specifies database driver to use ('help' to get list of available drivers)
+  --db-ps-mode=STRING prepared statements usage mode {auto, disable} [auto]
+
+
+Compiled-in database drivers:
+  mysql - MySQL driver
+
+mysql options:
+  --mysql-host=[LIST,...]       MySQL server host [localhost]
+  --mysql-port=N                MySQL server port [3306]
+  --mysql-socket=STRING         MySQL socket
+  --mysql-user=STRING           MySQL user [sbtest]
+  --mysql-password=STRING       MySQL password []
+  --mysql-db=STRING             MySQL database name [sbtest]
+  --mysql-table-engine=STRING   storage engine to use for the test table {myisam,innodb,bdb,heap,ndbcluster,federated} [innodb]
+  --mysql-engine-trx=STRING     whether storage engine used is transactional or not {yes,no,auto} [auto]
+  --mysql-ssl=[on|off]          use SSL connections, if available in the client library [off]
+  --myisam-max-rows=N           max-rows parameter for MyISAM tables [1000000]
+  --mysql-create-options=STRING additional options passed to CREATE TABLE []
+
+```
 
 
 
