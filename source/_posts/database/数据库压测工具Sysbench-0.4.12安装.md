@@ -4,8 +4,8 @@ tags:
   - Sysbench
 author: coderluo
 img: http://media.coderluo.top//article/sysbenchsysbench%E5%B0%81%E9%9D%A2-1.png
-top: true
-cover: true
+top: false
+cover: false
 coverImg: http://media.coderluo.top//article/sysbenchsysbench%E5%B0%81%E9%9D%A2-1.png
 categories: 数据库
 date: 2019-10-13 21:13:39
