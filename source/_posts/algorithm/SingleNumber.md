@@ -145,7 +145,7 @@ class Solution {
 
 想一起打卡进步的朋友们,欢迎关注笔者公众号: **爱上敲代码**, 会定期分享Java技术干活,让枯燥的技术游起来!
 
-![扫码关注](http://media.coderluo.top//gongzhoanghao/erweima.jpg)
+![扫码关注](http://media.coderluo.top/blog/article/wechar-erweima/最新关注引导.png)
 
 
 
