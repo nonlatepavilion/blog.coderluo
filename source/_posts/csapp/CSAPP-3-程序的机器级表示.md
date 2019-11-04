@@ -5,6 +5,8 @@ tags:
 categories: 操作系统
 date: 2019-10-08 23:08:05
 author: coderluo
+image: http://media.coderluo.top/blog/article/csapp-3/1572882107(1).png
+
 ---
 
 > 如果能完全理解计算机系统以及它对应用程序的影响，那么恭喜你，你走上了一条为数不多的大牛道路。本文继前两篇之后继续深入学习计算机系统中程序的机器级表示；如果对之前的文章感兴趣可以点击阅读：
@@ -162,7 +164,9 @@ gcc -Og -o prog main.c mstore.c
 
 一个x86-64 的中央处理单元（CPU）包含一组16个存储64位值的 `通用目的寄存器`。它们的名字都以%r开头：
 
-![整数寄存器。所有16个寄存器的低位部分都可以作为字节、字(16位)、双字(32位)和四字(64位)数字来访问](C:\Users\chong\Desktop\公众号\小罗公众号\csapp\chapter3\整数寄存器.png)
+
+
+![](http://media.coderluo.top/blog/article/csapp-3/整数寄存器.png)
 
 
 
@@ -175,16 +179,16 @@ gcc -Og -o prog main.c mstore.c
 如上所述，各种不同的操作数可被分为三类：
 
 1. 立即数，用来表示常数值，书写方式为 `$` 后面跟一个标准C表示的整数,如：`$-577`；
-2. 寄存器类型，它表示某个寄存器的内容,下图中我们用 $r_a$ 来表示任意寄存寄存器， 用引用 R[ $r_a$ ] 来表示它的值，这是将寄存器集合看成是一个数组R；
-3. 内存引用，根据地址访问某个内存位置，用 $ M_b[Addr] $ 表示对存储在内存中从地址Addr开始的b个字节值的引用。
+2. 寄存器类型，它表示某个寄存器的内容,下图中我们用 $r_a​$ 来表示任意寄存寄存器， 用引用 R[ $r_a​$ ] 来表示它的值，这是将寄存器集合看成是一个数组R；
+3. 内存引用，根据地址访问某个内存位置，用 $ M_b[Addr] ​$ 表示对存储在内存中从地址Addr开始的b个字节值的引用。
 
 
 
-![操作数格式](C:\Users\chong\Desktop\公众号\小罗公众号\csapp\chapter3\操作数格式.png)
+![](http://media.coderluo.top/blog/article/csapp-3/操作数格式.png)
 
 
 
-如上图所示，有多种不同的寻址模式，允许不同形式的内存引用。$ Imm(r_b, r_i, s)$  表示的是最常用的形式； 这样的引用有四个组成部分： 一个立即数偏移 $Imm$ , 一个基址寄存器 $r_b$ , 一个变址寄存器 $r_i$ 和一个比例因子 $s$，这里需要注意 s 必须是1、2、4、8。 基址和变址寄存器都必须是64位寄存器。 有效地址被计算为： $ Imm + R[r_b] + R[r_i] * s$  。
+如上图所示，有多种不同的寻址模式，允许不同形式的内存引用。 $ Imm(r_b, r_i, s)$  表示的是最常用的形式； 这样的引用有四个组成部分： 一个立即数偏移 $Imm$ , 一个基址寄存器 $r_b$  , 一个变址寄存器  $r_i$  和一个比例因子 $s$ ，这里需要注意 s 必须是1、2、4、8。 基址和变址寄存器都必须是64位寄存器。 有效地址被计算为：  $ Imm + R[r_b] + R[r_i] * s$  。
 
 
 
@@ -198,7 +202,7 @@ gcc -Og -o prog main.c mstore.c
 
 
 
-![简单的数据传送指令](C:\Users\chong\Desktop\公众号\小罗公众号\csapp\chapter3\数据传送指令.png)
+![](http://media.coderluo.top/blog/article/csapp-3/数据传送指令.png)
 
 
 
@@ -258,7 +262,7 @@ exchange:
 
 
 
-![入栈和出站指令](C:\Users\chong\Desktop\公众号\小罗公众号\csapp\chapter3\入栈和出站指令.png)
+![](http://media.coderluo.top/blog/article/csapp-3/入栈和出站指令.png)
 
 
 
@@ -278,7 +282,9 @@ movq %rbp,(%rsp)	// Store %rbp on stack
 
 下面的图更能说明执行压栈和弹出时，是如何执行指令的：
 
-![栈操作说明](C:\Users\chong\Desktop\公众号\小罗公众号\csapp\chapter3\栈操作说明.png)
+
+
+![](http://media.coderluo.top/blog/article/csapp-3/栈操作说明.png)
 
 
 
@@ -290,7 +296,9 @@ x86-64定义了一些整数和逻辑操作，大多数操作都分成了指令�
 
 
 
-![整数算术操作](C:\Users\chong\Desktop\公众号\小罗公众号\csapp\chapter3\整数算术操作.png)
+![](http://media.coderluo.top/blog/article/csapp-3/整数算术操作.png)
+
+
 
 这些操作被分为四组： 加载有效地址、一元操作、二元操作和移位。二元操作有两个操作数，而一元操作有一个操作数。
 
@@ -332,11 +340,218 @@ scale:
 
 
 
+### 循环
+
+
+
+这里在列举一个我们代码开发中常用的循环，其实在汇编器中没有对应指令的存在，GCC汇编器产生的循环代码主要基于两种循环模式。首先看下do-while 循环。
+
+1. do-while 循环
+
+   一般常见的形式如下：
+
+   ```c
+   do
+   	body-statement
+   	while(test-expr);
+   ```
+
+   上述这种通用形式会被翻译为如下条件和goto语句：
+
+   ```c
+   loop:
+   	body-statement
+   	t = test-expr;
+   	if(t)
+   		goto loop;
+   ```
+
+   
+
+   接下来为大家举个例子，用do-while循环来实现一个数字n的阶乘函数，即 n!。 这个函数只计算 n > 0 时的阶乘值。
+
+   ```c
+   long fact_do(long n)
+   {
+       long result = 1;
+       do{
+           result *= n;
+           n = n-1;
+       } while (n > 1);
+       return result;
+   }
+   ```
+
+   汇编代码：
+
+   ```assembly
+   // n in %rdi
+   fact_do:
+   	movl	$1, %eax	// set result = 1
+   .L2:					// loop
+   	imulq	%rdi,	%rax	// computer result *= n
+   	subq	$1,	%rdi	// Decrement n
+   	cmpq	$1,	%rdi	// Compare n:1
+   	jg		.L2			// if >, goto loop
+   	rep;	ret   		// return
+   ```
+
+   
+
+2. while循环
+
+   while语句的通用形式如下：
+
+   ```c
+   while(test-expr)
+   	body-statement
+   ```
+
+   翻译到goto代码：
+
+   ```c
+   	goto test;
+   loop:
+   	body-statement
+   test:
+   	t = test-expr;
+   	if(t)
+   		goto loop;
+   ```
+
+   同样的，我们来看一个n的阶乘n!，不同于上面的是这个函数可以计算 0！=1。
+
+   C代码：
+
+   ```c
+   long fact_while(long n)
+   {
+       	long result = 1;
+       	while(n > 1) {
+               result *= n;
+               n = n - 1;
+       	}
+       	return result;
+   }
+   ```
+
+   对应的汇编(带注释)：
+
+   ```assembly
+   // n in %rdi
+   fact_while:
+   	movl	$1, %eax	// set result = 1
+   	jmp	.L2				// Goto	test
+   .L3:					//loop
+   	imulq	%rdi, %rax		// Compute result *= n
+   	subq	$1, %rdi		//Decrement n
+   .L2:					// test
+   	cmpq	$1, %rdi	// Compare n:1
+   	jg	.L3				// if >, goto loop
+   	rep ret				// Return
+   ```
+
+   
+
+### 过程
+
+
+
+过程其实是软件中一种很重要的抽象。就像我们在写代码时，一个函数，传进去入参和一个可选的返回值定义了某个功能。不同的语言过程的形式多样，比如函数、方法、子例程、等等。
+
+机器对过程的实现提供了下面几个支持，为了方便大家理解，例如：过程P调用过程Q，Q执行后返回到P，这些动作包含如下一个或多个机制：
+
+1. 传递控制。在进入Q时，PC要设置为Q代码的起始地址，然后在返回时，要设置为P调用Q后那条指令的地址；
+2. 传递数据。P必须向Q提供一个或多个参数，Q必须向P提供一个返回值；
+3. 分配和释放内存。Q在执行时需要为局部变量分配空间，当返回时，销毁这些空间；
+
+
+
+#### 运行时栈
+
+下面这副图，很直观的表示了运行时栈的通用结构。可以看到栈用来传递参数、存储返回信息、保存寄存器以及局部存储等。（Java方法调用即是这个结构）
+
+
+
+![](http://media.coderluo.top/blog/article/csapp-3/运行时栈.png)
+
+
+
+我们可以看到，过程的调用被划分为一个个栈帧，本文前面列出的寄存器部分，可以看到寄存器最多可以保存6个参数，如果P向Q传递的参数超过6个，这个时候就会在栈帧上分配，即将从第7个参数开始P将其保存到自己的栈帧上。
+
+
+
+#### 数据传送
+
+下面展示寄存器最多传递6个参数，它们是怎么分配的。其实就是按照参数列表的顺序分配寄存器，如果参数小于64位，则通过访问寄存器适当的部分访问，例如，如果一个参数是32位的，那么可以用%edi来访问它。
+
+
+
+![传递函数参数的寄存器](http://media.coderluo.top/blog/article/csapp-3/寄存器参数使用.png)
 
 
 
 
 
+上面你说了那么多的理论，下面我们具体来看一个参数传递的示例，掌握了这个，你就会对平时我们代码中的函数调用在计算机操作系统层面是如何解析执行的。
+
+- C代码
+
+```c
+void proc ( long a1, long *a1p,
+			int a2,int *a2p,
+			short a3,short *a3p,
+			char a4, char *a4p) 
+{
+    *a1p += a1;
+    *a2p += a2;
+    *a3p += a3;
+    *a4p += a4;
+}
+```
+
+
+
+- 生成的汇编
+
+```assembly
+
+// a1 in %rdi
+// a1p in % rsi
+// a2 in %edx
+// a2p in %rcx
+// a3 in %r8w
+// a3p in %r9
+// a4 at %rsp+8
+// a4p at %rsp+16
+
+proc:
+	movq	16(%rsp), %rax
+	addq	%rdi, (%rsi)
+	addl	%edx, (%rcx)
+	addw	%r8w, (%r9)
+	movl	8(%rsp), %edx
+	addb	%dl, (%rax)
+	ret
+```
+
+
+
+可以看到，上面有多个 不同类型的参数，参数1~6通过寄存器传递，7~8通过栈传递。
+
+
+
+至此，程序的函数调用以及常规运算在计算机系统中是如何被解释执行的，相信你一定有自己的理解了。由于篇幅原因，感兴趣的小伙伴可以在想下 递归又该如何实现呢 ？
+
+
+
+## 回顾
+
+
+
+到这里基本上已经学习了日常代码在计算机中是如何被解析运行的，以及常见的代码被翻译成汇编代码后相信大家也能可以看懂的。我觉得汇编代码我们只要能基本上看懂就可以了，毕竟现在也没有人直接写汇编，除非从事底层系统开发者。 大家可以思考下数组在内存是如何表示的，程序 又是如何引用其中的元素呢？  有兴趣的朋友可以关注加我继续交流哈！
+
+建议大家有时间的话一定要将文章的示例动手写一遍，相信一定会对程序时如何在计算机上运行起来的有更深一步的了解。 不付出又怎么会有回报，加油。
 
 
 
