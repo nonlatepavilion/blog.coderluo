@@ -1,11 +1,13 @@
 ---
 title: CSAPP-3-程序的机器级表示
 tags:
-  - CSAPP
+  - 汇编 
+  - 机器级表示
 categories: 操作系统
 date: 2019-10-08 23:08:05
 author: coderluo
-image: http://media.coderluo.top/blog/article/csapp-3/1572882107(1).png
+mathjax: true
+img: http://media.coderluo.top/blog/article/csapp-3/1572882107(1).png
 
 ---
 

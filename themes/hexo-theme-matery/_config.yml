@@ -166,7 +166,7 @@ clicklove:
 profile:
   avatar: /medias/avatar.jpg
   career: 软件工程师
-  introduction: 90后程序员，目前坐标深圳，喜欢敲代码，享受编程带来的成就感。 # If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
+  introduction: 90后程序员，目前坐标深圳，热爱编程，享受编程带来的成就感。 # If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
