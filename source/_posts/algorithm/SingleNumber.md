@@ -3,10 +3,8 @@ title: leetcode136-只出现一次的数字
 tags:
   - 数组
 author: coderluo
-img: >-
-  http://media.coderluo.top/algorithm/leetcode/136%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97.png
+img: http://media.coderluo.top/algorithm/leetcode/136%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97.png
 top: true
-cover: true
 categories: algorithm
 date: 2019-10-26 13:51:54
 ---

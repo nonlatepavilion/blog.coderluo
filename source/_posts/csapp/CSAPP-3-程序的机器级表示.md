@@ -7,7 +7,7 @@ categories: 操作系统
 date: 2019-10-08 23:08:05
 author: coderluo
 mathjax: true
-img: http://media.coderluo.top/blog/article/csapp-3/1572882107(1).png
+img: http://media.coderluo.top/csapp/3/csapp-3-fengmian.png
 
 ---
 

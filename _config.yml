@@ -6,14 +6,14 @@
 title: 爱上编程
 subtitle: 罗小黑的空间
 description: 努力做有价值的技术文章
-keywords: 罗小黑, coderluo
+keywords: 罗小黑,coderluo,爱上编程
 author: coderluo
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://coderluo.top
+url: https://coderluo.top
 root: /
 permalink: :title/ # :year/:month/:day/:title/
 permalink_defaults:

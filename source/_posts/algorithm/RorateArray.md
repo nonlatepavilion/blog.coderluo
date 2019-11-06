@@ -3,7 +3,7 @@ title: leetcode189-旋转数组
 tags:
   - 数组
 author: coderluo
-cover: true
+cover: false
 img: http://media.coderluo.top/blog/article/algorithm/189-封面.jpg
 categories: algorithm
 date: 2019-10-27 15:56:38
