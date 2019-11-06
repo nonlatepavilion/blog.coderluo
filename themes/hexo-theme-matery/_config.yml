@@ -314,10 +314,10 @@ libs:
   css:
     valine: https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js # /libs/valine/Valine.min.js # 1.3.10  若想保持最新版，请替换为 //unpkg.com/valine/dist/Valine.min.js  默认为 /libs/valine/Valine.min.js
     fontAwesome: https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css # /libs/awesome/css/font-awesome.min.css # V4.7.0
-    materialize: /libs/materialize/materialize.min.css # 1.0.0
-    aos: /libs/aos/aos.css
-    animate: /libs/animate/animate.min.css # V3.5.1
-    lightgallery: /libs/lightGallery/css/lightgallery.min.css # V1.6.11
+    materialize: https://cdn.jsdelivr.net/gh/coderluojust/CDN/materialize.min.css #/libs/materialize/materialize.min.css # 1.0.0
+    aos: https://cdn.jsdelivr.net/gh/coderluojust/CDN/aos.css #/libs/aos/aos.css
+    animate: https://cdn.jsdelivr.net/gh/coderluojust/CDN/animate.min.css #/libs/animate/animate.min.css # V3.5.1
+    lightgallery: https://cdn.jsdelivr.net/gh/coderluojust/CDN/lightgallery.min.css #/libs/lightGallery/css/lightgallery.min.css # V1.6.11
     aplayer: /libs/aplayer/APlayer.min.css
     dplayer: /libs/dplayer/DPlayer.min.css
     gitalk: /libs/gitalk/gitalk.css
@@ -325,13 +325,13 @@ libs:
     tocbot: /libs/tocbot/tocbot.css
   js:
     jquery: https://cdn.jsdelivr.net/npm/jquery@3.0.0-rc1/dist/jquery.min.js # /libs/jquery/jquery-2.2.0.min.js
-    materialize: /libs/materialize/materialize.min.js # 1.0.0
-    masonry: /libs/masonry/masonry.pkgd.min.js # v4.0.0
+    materialize: https://cdn.jsdelivr.net/gh/coderluojust/CDN/materialize.min.js #/libs/materialize/materialize.min.js # 1.0.0
+    masonry: https://cdn.jsdelivr.net/gh/coderluojust/CDN/masonry.pkgd.min.js #/libs/masonry/masonry.pkgd.min.js # v4.0.0
     aos: https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js # /libs/aos/aos.js
     scrollProgress: /libs/scrollprogress/scrollProgress.min.js
     lightgallery: https://cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery.min.js # /libs/lightGallery/js/lightgallery-all.min.js # V1.6.11
-    clicklove: /libs/others/clicklove.js
-    busuanzi: /libs/others/busuanzi.pure.mini.js
+    clicklove: https://cdn.jsdelivr.net/gh/coderluojust/CDN/clicklove.js # /libs/others/clicklove.js
+    busuanzi: https://cdn.jsdelivr.net/gh/coderluojust/CDN/busuanzi.pure.mini.js #/libs/others/busuanzi.pure.mini.js
     aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js # /libs/aplayer/APlayer.min.js
     dplayer: /libs/dplayer/DPlayer.min.js
     crypto: /libs/cryptojs/crypto-js.min.js
@@ -346,25 +346,25 @@ featureImages:
 - /medias/featureimages/0.jpg
 - /medias/featureimages/1.jpg
 - /medias/featureimages/2.jpg
-- /medias/featureimages/3.jpg
+- https://cdn.jsdelivr.net/gh/coderluojust/CDN/img/3.jpg #/medias/featureimages/3.jpg
 - /medias/featureimages/4.jpg
 - /medias/featureimages/5.jpg
 - /medias/featureimages/6.jpg
 - /medias/featureimages/7.jpg
 - /medias/featureimages/8.jpg
-- /medias/featureimages/9.jpg
+- https://cdn.jsdelivr.net/gh/coderluojust/CDN/img/9.jpg #/medias/featureimages/9.jpg
 - /medias/featureimages/10.jpg
 - /medias/featureimages/11.jpg
 - /medias/featureimages/12.jpg
-- /medias/featureimages/13.jpg
-- /medias/featureimages/14.jpg
+- https://cdn.jsdelivr.net/gh/coderluojust/CDN/img/13.jpg #/medias/featureimages/13.jpg
+- https://cdn.jsdelivr.net/gh/coderluojust/CDN/img/14.jpg #/medias/featureimages/14.jpg
 - /medias/featureimages/15.jpg
 - /medias/featureimages/16.jpg
-- /medias/featureimages/17.jpg
+- https://cdn.jsdelivr.net/gh/coderluojust/CDN/img/17.jpg # /medias/featureimages/17.jpg
 - /medias/featureimages/18.jpg
 - /medias/featureimages/19.jpg
 - /medias/featureimages/20.jpg
-- /medias/featureimages/21.jpg
+- https://cdn.jsdelivr.net/gh/coderluojust/CDN/img/21.jpg # /medias/featureimages/21.jpg
 - /medias/featureimages/22.jpg
 - /medias/featureimages/23.jpg
 
