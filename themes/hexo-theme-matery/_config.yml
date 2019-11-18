@@ -317,7 +317,7 @@ libs:
     materialize: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/materialize.min.css #/libs/materialize/materialize.min.css # 1.0.0
     aos: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/aos.min.css #/libs/aos/aos.css
     animate: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/animate.min.css #/libs/animate/animate.min.css # V3.5.1
-    lightgallery: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/lightgallery.min.css #/libs/lightGallery/css/lightgallery.min.css # V1.6.11
+    lightgallery: /libs/lightGallery/css/lightgallery.min.css # V1.6.11
     aplayer: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/APlayer.min.css # /libs/aplayer/APlayer.min.css
     dplayer: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/DPlayer.min.css # /libs/dplayer/DPlayer.min.css
     gitalk: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/gitalk.min.css # /libs/gitalk/gitalk.css
@@ -328,6 +328,7 @@ libs:
     aos: https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js # /libs/aos/aos.js
     aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js # /libs/aplayer/APlayer.min.js
     lightgallery: https://cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery.min.js # /libs/lightGallery/js/lightgallery-all.min.js # V1.6.11
+
     busuanzi: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/busuanzi.pure.mini.js #/libs/others/busuanzi.pure.mini.js
     materialize: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/materialize.min.js #/libs/materialize/materialize.min.js # 1.0.0
     masonry: https://cdn.jsdelivr.net/gh/coderluojust/CDN/dist/masonry.pkgd.min.js #/libs/masonry/masonry.pkgd.min.js # v4.0.0
