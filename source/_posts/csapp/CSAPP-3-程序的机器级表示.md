@@ -557,7 +557,9 @@ proc:
 
 
 
+关注下方我的公众号，**领取进阶高级架构师视频，掌握第一手资料。**
 
+![关注领取Java架构师免费资料](http://media.coderluo.top/gzh/erweima/扫描二维码0.png)
 
 
 

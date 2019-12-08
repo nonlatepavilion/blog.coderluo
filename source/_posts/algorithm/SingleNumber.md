@@ -141,9 +141,9 @@ class Solution {
 
 
 
-想一起打卡进步的朋友们,欢迎关注笔者公众号: **爱上敲代码**, 会定期分享Java技术干活,让枯燥的技术游起来!
+关注我的公众号，领取进阶高级架构师视频，掌握第一手资料。
 
-![扫码关注](http://media.coderluo.top/blog/article/wechar-erweima/最新关注引导.png)
+![关注领取Java架构师免费资料](http://media.coderluo.top/gzh/erweima/扫描二维码0.png)
 
 
 
